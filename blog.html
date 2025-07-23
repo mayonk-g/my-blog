@@ -12,12 +12,25 @@
       <a href="blog.html">Blog</a>
       <a href="about.html">About</a>
     </nav>
+    <button onclick="toggleDarkMode()">🌗 Toggle Dark Mode</button>
+    <input type="text" id="searchInput" placeholder="Search posts..." onkeyup="searchPosts()" />
   </header>
   <main>
     <h2>Latest Posts</h2>
-    <ul>
-      <li><a href="post1.html">How I Built This Blog</a></li>
-    </ul>
+    <ul id="postList"></ul>
   </main>
+  <script src="script.js"></script>
+  <script>
+    fetch('posts.json')
+      .then(res => res.json())
+      .then(posts => {
+        const ul = document.getElementById("postList");
+        posts.forEach(post => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${post.link}">${post.title}</a>`;
+          ul.appendChild(li);
+        });
+      });
+  </script>
 </body>
 </html>

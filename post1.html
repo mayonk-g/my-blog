@@ -12,11 +12,28 @@
       <a href="blog.html">Blog</a>
       <a href="about.html">About</a>
     </nav>
+    <button onclick="toggleDarkMode()">🌗 Toggle Dark Mode</button>
   </header>
   <main>
     <h2>How I Built This Blog</h2>
     <p>Published: July 23, 2025</p>
     <p>This blog was built using HTML and CSS. I plan to add more features later using JavaScript and backend tools.</p>
+
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = document.title;
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YOUR-SHORTNAME.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
